@@ -3,10 +3,10 @@ const conexionDB = require('../database/config');
 
 module.exports = {
 
-    //Listar todas los restauranteses disponibles asc
+    //Listar todas los restaurantes disponibles asc
     getRestaurante: (req, res, next) => {
         const db = conexionDB;
-        var sql = "SELECT * FROM restaurantes";
+        var sql = "SELECT * FROM restaurante";
         var query = db.query(sql, (err, results) => {
             if (err) throw err;
             res.json(results)
@@ -16,7 +16,7 @@ module.exports = {
     //Metodo para obtener una reserva por su ID
     getOnerestaurante: (req, res, next) => {
         const db = conexionDB;
-        var sql = "SELECT * FROM restaurantes WHERE idrestaurantes = '" + req.params.id + "'";
+        var sql = "SELECT * FROM restaurante WHERE idrestaurante = '" + req.params.id + "'";
         var query = db.query(sql, (err, results) => {
             if (err) throw err;
             res.json(results);
@@ -28,7 +28,7 @@ module.exports = {
         const db = conexionDB;
         const data = {
             nombre: req.body.nombre, direccion: req.body.direccion, telefono: req.body.telefono };
-        var sql = "INSERT INTO restaurantes SET ?";
+        var sql = "INSERT INTO restaurante SET ?";
         var query = db.query(sql, data, (err, results) => {
             if (err) throw err;
             res.send(JSON.stringify({ "status": 200, "error": null, "response": results }));
@@ -39,7 +39,7 @@ module.exports = {
         const db = conexionDB;
         const data = {
             nombre: req.body.nombre, direccion: req.body.direccion, telefono: req.body.telefono };
-        var sql = "UPDATE restaurantes SET ?"
+        var sql = "UPDATE restaurante SET ?"
         var query = db.query(sql, data, (err, results) => {
             if (err) throw err;
             res.json(results)
@@ -48,7 +48,7 @@ module.exports = {
 
     EliminarRestaurante: (req, res, next) => {
         const db = conexionDB;
-        var sql = "DELETE FROM restaurantes WHERE idrestaurantes = '" + req.params.id + "'";
+        var sql = "DELETE FROM restaurante WHERE idrestaurante = '" + req.params.id + "'";
         var query = db.query(sql, (err, results) => {
             if (err) throw err;
             res.send(JSON.stringify({ "status": 200, "error": null, "response": results }));
