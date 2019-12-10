@@ -27,9 +27,7 @@ module.exports = {
     AgregarRestaurante: (req, res, next) => {
         const db = conexionDB;
         const data = {
-            nombre: req.body.nombre, direccion: req.body.direccion, telefono: req.body.telefono,
-            precio: req.body.precio
-        };
+            nombre: req.body.nombre, direccion: req.body.direccion, telefono: req.body.telefono };
         var sql = "INSERT INTO restaurantes SET ?";
         var query = db.query(sql, data, (err, results) => {
             if (err) throw err;
@@ -40,9 +38,7 @@ module.exports = {
     ActualizarRestaurante: (req, res, next) => {
         const db = conexionDB;
         const data = {
-            nombre: req.body.nombre, direccion: req.body.direccion, telefono: req.body.telefono,
-            precio: req.body.precio
-        };
+            nombre: req.body.nombre, direccion: req.body.direccion, telefono: req.body.telefono };
         var sql = "UPDATE restaurantes SET ?"
         var query = db.query(sql, data, (err, results) => {
             if (err) throw err;
