@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const bodyParser = require('body-parser');
 const app = express();
 const conexionDB = require('./database/config');
@@ -26,7 +27,7 @@ const puerto = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use('', express.static(__dirname + 'public'));
+router.get('/',express.static(__dirname + 'public'))
 app.use('/api/', rutas);
 
 
