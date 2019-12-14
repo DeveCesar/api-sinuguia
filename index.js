@@ -26,7 +26,7 @@ const puerto = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/', express.static(__dirname + 'public'));
+app.use('', express.static(__dirname + 'public'));
 app.use('/api/', rutas);
 
 
