@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const conexionDB = require('./database/config');
+const localDB = require('./database/config');
 const rutas = require('./routes/index');
 const cors = require('cors');
 const morgan = require('morgan');
+localDB;
 conexionDB;
 app.use((req, res, next) => {
   //configurar cabecera
@@ -24,6 +26,7 @@ const puerto = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
+app.use('/', express.static(__dirname + 'public'));
 app.use('/api/', rutas);
 
 
